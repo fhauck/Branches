@@ -6,7 +6,7 @@
 	Theme URI: http://www.flohauck.de/themes/branches/
 	Version: 1.01
 	Description: Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or additional javascript file for the layout itself, so its very lightweight.
-	Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, one-column, two-columns
+	Tags: blog, featured-images, sticky-post, theme-options, threaded-comments, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 	Author: Flo Hauck
 	Author URI: http://www.flohauck.de
 	License: GNU General Public License version 2.0
@@ -694,6 +694,28 @@ footer .theme-copyright a:hover {
   color: inherit;
 }
 
+.post-info-right-bottom {
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 0.725rem;
+  line-height: 0.725rem;
+  text-transform: uppercase;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+}
+
+@media only screen and (max-width: 520px) {
+  .post-info-right-bottom {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+.post-info-right-bottom a {
+  color: inherit;
+}
+
 #post-area {
   width: 76%;
   float: left;
@@ -975,6 +997,10 @@ footer .theme-copyright a:hover {
 
 #single-post .post-info .bypostauthor {
   font-weight: bold;
+}
+
+#single-post .post-info a {
+  color: inherit;
 }
 
 #single-post h1 {

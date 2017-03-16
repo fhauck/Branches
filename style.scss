@@ -676,6 +676,26 @@ footer {
 	}
 }
 
+.post-info-right-bottom {
+	position: absolute;
+	color: #FFFFFF;
+	font-size: 0.725rem;
+	line-height: 0.725rem;
+	text-transform: uppercase;
+	right: 20px;
+	bottom: 20px;
+	z-index: 2;
+	
+	@media only screen and (max-width: 520px) {
+		right: 10px;
+		bottom: 10px;
+	}
+	
+	a {
+		color: inherit;
+	}
+}
+
 #post-area {
 	width: 76%;
 	float: left;
@@ -953,6 +973,10 @@ footer {
 		
 		.bypostauthor {
 			font-weight: bold;
+		}
+		
+		a {
+			color: inherit;
 		}
 	}
 	

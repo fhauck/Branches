@@ -79,7 +79,7 @@
 	
 		<div class="comments-inner">
 
-			<p class="no-comments"><?php _e( 'Comments are closed.', 'branches' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'branches' ); ?></p>
 		
 		</div>
 		

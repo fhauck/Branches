@@ -16,6 +16,7 @@
 		
 		<div class="post-info">
 			<?php echo get_the_date(); ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php _e('by','branches'); ?> <span class="bypostauthor"><?php echo get_the_author(); ?></span>
+			<?php edit_post_link(__( 'Edit Post', 'branches' ), '&nbsp;&nbsp;|&nbsp;&nbsp;', ''); ?>
 		</div>
 		
 		<div class="entry">

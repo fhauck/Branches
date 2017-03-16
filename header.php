@@ -17,38 +17,10 @@
 	
 	<header>
 		
-		<?php if( get_theme_mod( 'branches_social_media_links_position_header' ) == '') { } else { ?>
-		<div class="social">
-		<?php 
-			if(get_theme_mod( 'branches_social_media_links_facebook' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_facebook' ).'" target="_blank">Facebook</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_twitter' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_twitter' ).'" target="_blank">Twitter</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_instagram' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_instagram' ).'" target="_blank">Instagram</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_youtube' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_youtube' ).'" target="_blank">YouTube</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_linkedin' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_linkedin' ).'" target="_blank">LinkedIn</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_googleplus' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_googleplus' ).'" target="_blank">Google+</a>'; 
-			}
-			if(get_theme_mod( 'branches_social_media_links_pinterest' ) != ''){
-				echo '<a href="'.get_theme_mod( 'branches_social_media_links_pinterest' ).'" target="_blank">Pinterest</a>'; 
-			}
-		?>
-		</div>
-		<?php } ?>
-		
 		<div id="logo">
 			<?php if ( get_theme_mod( 'branches_logo' ) ) : ?>
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img id="logo-img" src="<?php echo esc_url( get_theme_mod( 'branches_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>">
+					<img id="logo-img" src="<?php echo esc_url( get_theme_mod( 'branches_logo' ) ); ?>" alt="<?php bloginfo( 'title' ); ?>">
 				</a>
 			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
 				<h1 id="logo-maintitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
@@ -61,7 +33,7 @@
 	<nav>
 		
 		<a href="javascript:;" class="burger-menu">
-		  <?php _e('Navigation','branches'); ?>
+		  <?php esc_html_e('Navigation','branches'); ?>
 		</a>
 		<ul class="main-menu">
 		<?php if ( has_nav_menu( 'primary' ) ) {

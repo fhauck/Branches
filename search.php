@@ -4,15 +4,15 @@
 	
 
 <?php if ( have_posts() ) : ?>
-		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'branches' ), '' . get_search_query() . '' ); ?></h1>
+		<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'branches' ), '' . get_search_query() . '' ); ?></h1>
 			<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'loop' ); ?>
 			<?php endwhile; ?>
 <?php else : ?>
 		<div id="single-post">
-		<h1 class="page-title"><?php _e( 'Nothing Found', 'branches' ); ?></h1>
+		<h1 class="page-title"><?php printf( esc_html__( 'Nothing Found', 'branches' ) ); ?></h1>
 			<div class="entry">
-			<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'branches' ); ?></p>
+			<p><?php printf( esc_html__( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'branches' ) ); ?></p>
 			</div>
 		</div>
 <?php endif; ?>
