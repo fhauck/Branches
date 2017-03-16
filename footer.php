@@ -45,12 +45,5 @@
 
 <?php wp_footer(); ?>
 
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	jQuery('.burger-menu').on('click', function(){
-		jQuery('.main-menu').slideToggle();
-	});
-});
-</script>
 </body>
 </html>

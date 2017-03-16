@@ -83,6 +83,20 @@ function branches_sidebar_reg() {
 add_action( 'widgets_init', 'branches_sidebar_reg' ); 
 
 
+// Enqueue scripts and styles.
+function branches_scripts() {
+
+	wp_enqueue_script( 'branches-scripts', get_template_directory_uri() . '/js/branches-scripts.js', array( 'jquery' ), '', true);
+
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'branches_scripts' );
+
+
+
 function branches_sanitize_int($yourVar){
 	//return true;
 	$sanitizedNum = filter_var($yourVar, FILTER_SANITIZE_NUMBER_INT);
