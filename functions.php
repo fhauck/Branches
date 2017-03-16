@@ -1,34 +1,29 @@
 <?php
-	
-/*  Thumbnail upscale
-/* ------------------------------------ */ 
-function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
-    if ( !$crop ) return null; // let the wordpress default function handle this
- 
-    $aspect_ratio = $orig_w / $orig_h;
-    $size_ratio = max($new_w / $orig_w, $new_h / $orig_h);
- 
-    $crop_w = round($new_w / $size_ratio);
-    $crop_h = round($new_h / $size_ratio);
- 
-    $s_x = floor( ($orig_w - $crop_w) / 2 );
-    $s_y = floor( ($orig_h - $crop_h) / 2 );
- 
-    return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
-}
-add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
-
 
 // Theme setup
-add_action( 'after_setup_theme', 'branches_setup' );
-
 function branches_setup() {
+	
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+	
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
 	
 	// Automatic feed
 	add_theme_support( 'automatic-feed-links' );
 	
 	// Add nav menu
 	register_nav_menu( 'primary', __('Primary Menu','branches') );
+	
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'menu-1' => esc_html__( 'Primary', 'branches' ),
+	) );
 	
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size ( 360, 230, true );
@@ -54,9 +49,7 @@ function branches_setup() {
 	global $content_width;
 	if ( ! isset( $content_width ) ) $content_width = 882;
 }
-
-
-
+add_action( 'after_setup_theme', 'branches_setup' );
 
 // Register and enqueue styles
 function branches_load_style() {
@@ -65,26 +58,17 @@ function branches_load_style() {
 	    wp_enqueue_style( 'branches_style', get_stylesheet_uri() );
 	}
 }
-
 add_action('wp_print_styles', 'branches_load_style');
 
-function insert_jquery(){
-wp_enqueue_script('jquery', false, array(), false, false);
-}
-add_filter('wp_enqueue_scripts','insert_jquery',1);
-
 // Add editor styles
-add_action( 'init', 'branches_add_editor_styles' );
-
 function branches_add_editor_styles() {
     add_editor_style( 'branches-editor-styles.css' );
     $font_url = '//fonts.googleapis.com/css?family=Noto+Serif:400,700|Open+Sans:400,600,700,800,800i';
     add_editor_style( str_replace( ',', '%2C', $font_url ) );
 }
+add_action( 'init', 'branches_add_editor_styles' );
 
 // Add sidebar widget area
-add_action( 'widgets_init', 'branches_sidebar_reg' ); 
-
 function branches_sidebar_reg() {
 	register_sidebar(array(
 	  'name' => __( 'Sidebar', 'branches' ),
@@ -96,11 +80,14 @@ function branches_sidebar_reg() {
 	  'after_widget' => '</div><div class="clear"></div></div>'
 	));
 }
- function branches_sanitize_int($yourVar){
-	 //return true;
-	 $sanitizedNum = filter_var($yourVar, FILTER_SANITIZE_NUMBER_INT);
-	 return $sanitizedNum;
- }
+add_action( 'widgets_init', 'branches_sidebar_reg' ); 
+
+
+function branches_sanitize_int($yourVar){
+	//return true;
+	$sanitizedNum = filter_var($yourVar, FILTER_SANITIZE_NUMBER_INT);
+	return $sanitizedNum;
+}
 
 // Branches theme options
 class branches_Customize {
@@ -392,12 +379,12 @@ class branches_Customize {
 	      <!-- Customizer CSS --> 
 	      
 	      <style type="text/css">
-	           <?php self::branches_generate_css('nav ul li.current-menu-item a', 'color', 'accent_color'); ?>
+	           
 	           <?php self::branches_generate_css('nav ul li a:hover', 'color', 'accent_color'); ?>
 	           <?php self::branches_generate_css('.read-more', 'color', 'accent_color'); ?>
-	           <?php self::branches_generate_css('nav ul li.current-post-ancestor a', 'color', 'accent_color'); ?>
-	           <?php self::branches_generate_css('nav ul li.current-menu-parent a', 'color', 'accent_color'); ?>
-	           <?php self::branches_generate_css('nav ul li.current-post-parent a', 'color', 'accent_color'); ?>
+	           
+	           <?php self::branches_generate_css('nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color'); ?>
+
 	      </style> 
 	      
 	      <!--/Customizer CSS-->
@@ -443,80 +430,16 @@ function branches_new_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'branches_new_excerpt_more' );
 
-
-// Return an alternate title, without prefix, for every type used in the get_the_archive_title().
-add_filter('get_the_archive_title', function ($title) {
-    if ( is_category() ) {
-        $title = single_cat_title( '', false );
-    } elseif ( is_tag() ) {
-        $title = single_tag_title( '', false );
-    } elseif ( is_author() ) {
-        $title = '<span class="vcard">' . get_the_author() . '</span>';
-    } elseif ( is_year() ) {
-        $title = get_the_date( _x( 'Y', 'yearly archives date format', 'branches' ) );
-    } elseif ( is_month() ) {
-        $title = get_the_date( _x( 'F Y', 'monthly archives date format', 'branches' ) );
-    } elseif ( is_day() ) {
-        $title = get_the_date( _x( 'F j, Y', 'daily archives date format', 'branches' ) );
-    } elseif ( is_tax( 'post_format' ) ) {
-        if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-            $title = _x( 'Asides', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-            $title = _x( 'Galleries', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-            $title = _x( 'Images', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-            $title = _x( 'Videos', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-            $title = _x( 'Quotes', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-            $title = _x( 'Links', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-            $title = _x( 'Statuses', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-            $title = _x( 'Audio', 'post format archive title', 'branches' );
-        } elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-            $title = _x( 'Chats', 'post format archive title', 'branches' );
-        }
-    } elseif ( is_post_type_archive() ) {
-        $title = post_type_archive_title( '', false );
-    } elseif ( is_tax() ) {
-        $title = single_term_title( '', false );
-    } else {
-        $title = __( 'Archives', 'branches' );
-    }
-    return $title;
-});
-
-
-function wpb_move_comment_field_to_bottom( $fields ) {
-$comment_field = $fields['comment'];
-unset( $fields['comment'] );
-$fields['comment'] = $comment_field;
-return $fields;
+function branches_move_comment_field_to_bottom( $fields ) {
+	$comment_field = $fields['comment'];
+	unset( $fields['comment'] );
+	$fields['comment'] = $comment_field;
+	return $fields;
 }
-
-add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
+add_filter( 'comment_form_fields', 'branches_move_comment_field_to_bottom' );
 
 if ( is_singular() ) wp_enqueue_script( "comment-reply" );
-
-add_theme_support( 'title-tag' );
-
-add_filter( 'wp_title', 'wpdocs_hack_wp_title_for_home' );
  
-/**
- * Customize the title for the home page, if one is not set.
- *
- * @param string $title The original title.
- * @return string The title to use.
- */
-function wpdocs_hack_wp_title_for_home( $title )
-{
-  if ( empty( $title ) && ( is_home() || is_front_page() ) ) {
-    $title = get_bloginfo( 'name', 'display' )  . ' | ' . get_bloginfo( 'description' );
-  }
-  return $title;
-}
 
 // branches comment function
 if ( ! function_exists( 'branches_comment' ) ) :
