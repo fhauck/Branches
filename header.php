@@ -47,12 +47,12 @@
 		
 		<div id="logo">
 			<?php if ( get_theme_mod( 'branches_logo' ) ) : ?>
-				<a href="<?php echo home_url( '/' ); ?>">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<img id="logo-img" src="<?php echo esc_url( get_theme_mod( 'branches_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>">
 				</a>
 			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
-				<h1 id="logo-maintitle"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-				<h2 id="logo-subtitle"><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'description' ); ?></a></h2>
+				<h1 id="logo-maintitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+				<h2 id="logo-subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'description' ); ?></a></h2>
 			<?php endif; ?>
 		</div>
 		

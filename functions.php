@@ -28,14 +28,14 @@ function branches_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size ( 360, 230, true );
 	
-	add_image_size( 'big-header-xxlarge', 2320, 980, true );
-	add_image_size( 'big-header-xlarge', 1740, 735, true );
-	add_image_size( 'big-header-large', 1160, 490, true );
-	add_image_size( 'big-header-medium', 766, 323, true );
-	add_image_size( 'big-header-small', 580, 245, true );
+	add_image_size( 'branches_big-header-xxlarge', 2320, 980, true );
+	add_image_size( 'branches_big-header-xlarge', 1740, 735, true );
+	add_image_size( 'branches_big-header-large', 1160, 490, true );
+	add_image_size( 'branches_big-header-medium', 766, 323, true );
+	add_image_size( 'branches_big-header-small', 580, 245, true );
 
-	add_image_size( 'post-thumbnail-medium', 720, 460, true );
-	add_image_size( 'post-thumbnail-small', 360, 230, true );	
+	add_image_size( 'branches_post-thumbnail-medium', 720, 460, true );
+	add_image_size( 'branches_post-thumbnail-small', 360, 230, true );	
 
 	// Make the theme translation ready
 	load_theme_textdomain('branches', get_template_directory() . '/languages');

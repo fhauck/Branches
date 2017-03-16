@@ -14,7 +14,7 @@ if ( isset($sticky[0]) ) {
 	<div class="sticky-post-top">
 	<article class="sticky">
 		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		<?php the_post_thumbnail('big-header-xxlarge'); ?>
+		<?php the_post_thumbnail('branches_big-header-xxlarge'); ?>
 		<a href="<?php the_permalink(); ?>" class="post-info-left-top"><?php echo get_the_date(); ?></a>
 		<a href="<?php the_permalink(); ?>" class="post-info-right-top"><?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?></a>
 		<span class="post-info-left-bottom"><?php echo get_the_category_list(', '); ?></span>

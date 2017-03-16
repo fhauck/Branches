@@ -2,7 +2,7 @@
 
 <?php if( get_theme_mod( 'branches_show_header_singlepost' ) == '') { } else { ?>
 	<article id="sticky-post">
-		<?php the_post_thumbnail('big-header-xxlarge'); ?>
+		<?php the_post_thumbnail('branches_big-header-xxlarge'); ?>
 	</article>
 <?php } ?>
 
