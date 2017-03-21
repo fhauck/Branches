@@ -36,6 +36,7 @@ function branches_setup() {
 
 	add_image_size( 'branches_post-thumbnail-medium', 720, 460, true );
 	add_image_size( 'branches_post-thumbnail-small', 360, 230, true );	
+	
 
 	// Make the theme translation ready
 	load_theme_textdomain('branches', get_template_directory() . '/languages');
@@ -50,6 +51,18 @@ function branches_setup() {
 	if ( ! isset( $content_width ) ) $content_width = 882;
 }
 add_action( 'after_setup_theme', 'branches_setup' );
+
+// Add Custom Logo support
+function branches_custom_logo_setup() {
+    $defaults = array(
+		'width'			=> 600,
+		'height'		=> 400,
+		'flex-height'	=> true,
+		'flex-width'	=> true
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'branches_custom_logo_setup' );
 
 // Register and enqueue styles
 function branches_load_style() {
@@ -89,11 +102,12 @@ function branches_scripts() {
 	wp_enqueue_script( 'branches-scripts', get_template_directory_uri() . '/js/branches-scripts.js', array( 'jquery' ), '', true);
 
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	if ( comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'branches_scripts' );
+
 
 
 
@@ -109,26 +123,6 @@ class branches_Customize {
 	public static function branches_register ( $wp_customize ) {
    
       
-		// Add Section for Logo
-		$wp_customize->add_section( 'branches_logo_section' , array(
-		    'title'       => __( 'Logo', 'branches' ),
-		    'priority'    => 40,
-		    'description' => __('Upload a logo to replace the default site title in the header', 'branches'),
-		) );
-		
-		// Add Setting for Logo
-		$wp_customize->add_setting( 'branches_logo', 
-			array( 
-				'sanitize_callback' => 'esc_url_raw'
-			) 
-		);
-		
-		// Add Control for Logo
-		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'branches_logo', array(
-		    'label'    => __( 'Logo', 'branches' ),
-		    'section'  => 'branches_logo_section',
-		    'settings' => 'branches_logo',
-		) ) );
 		
 		
 		// Add Setting for Accent Color

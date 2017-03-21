@@ -15,6 +15,8 @@
 			
 			<?php the_content(); ?>
 		</div>
+		
+		<?php comments_template( '', true ); ?>
 	</div>
 <?php endwhile; ?>
 <?php endif; ?>

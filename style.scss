@@ -212,12 +212,20 @@ header {
 	}
 }
 
-#logo-img {
+
+.custom-logo-link {
 	width: 100%;
 	max-width: 300px;
 	margin: 0 auto;
 	display: block;
+
+	
+	img {
+		width: 100% !important;
+		height: auto !important;		
+	}	
 }
+
 
 nav {
 	border-top: 1px solid $colorBorder;

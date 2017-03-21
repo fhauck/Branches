@@ -18,14 +18,17 @@
 	<header>
 		
 		<div id="logo">
-			<?php if ( get_theme_mod( 'branches_logo' ) ) : ?>
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img id="logo-img" src="<?php echo esc_url( get_theme_mod( 'branches_logo' ) ); ?>" alt="<?php bloginfo( 'title' ); ?>">
-				</a>
-			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
+			<?php 
+			if ( function_exists( 'the_custom_logo' ) ) {
+			if ( has_custom_logo() ) {
+				the_custom_logo();
+			} else { ?>
 				<h1 id="logo-maintitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 				<h2 id="logo-subtitle"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'description' ); ?></a></h2>
-			<?php endif; ?>
+			<?php 
+			} 
+			}
+			?>
 		</div>
 		
 	</header>

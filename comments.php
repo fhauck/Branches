@@ -73,19 +73,6 @@
 	
 <?php endif; ?>
 
-<?php if ( ! comments_open() && ! is_page() ) : ?>
-
-	<div class="comments-container">
-	
-		<div class="comments-inner">
-
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'branches' ); ?></p>
-		
-		</div>
-		
-	</div>
-	
-<?php endif; ?>
 
 <?php $comments_args = array(
 

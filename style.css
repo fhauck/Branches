@@ -233,11 +233,16 @@ header .social a:hover {
   color: inherit;
 }
 
-#logo-img {
+.custom-logo-link {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
   display: block;
+}
+
+.custom-logo-link img {
+  width: 100% !important;
+  height: auto !important;
 }
 
 nav {

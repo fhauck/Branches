@@ -34,7 +34,7 @@
 		?>
 		
 		<?php
-		echo get_the_tag_list('<div class="tag-list">Tags: ',', ','</div>');
+		echo get_the_tag_list('<div class="tag-list">',', ','</div>');
 		?>
 		
 		<?php comments_template( '', true ); ?>
