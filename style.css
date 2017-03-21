@@ -4,8 +4,8 @@
 	Theme Name: Branches
     Text Domain: branches
 	Theme URI: http://www.flohauck.de/themes/branches/
-	Version: 1.01
-	Description: Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or additional javascript file for the layout itself, so its very lightweight.
+	Version: 1.02
+	Description: Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or much additional javascript stuff for the layout itself, so its very lightweight.
 	Tags: blog, featured-images, sticky-post, theme-options, threaded-comments, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 	Author: Flo Hauck
 	Author URI: http://www.flohauck.de
@@ -148,6 +148,16 @@ img {
 
 :-ms-input-placeholder {
   color: #999;
+}
+
+.read-more, nav ul li a:hover,
+nav ul li.current-menu-item > a,
+nav ul li.current-post-ancestor > a,
+nav ul li.current-menu-parent > a,
+nav ul li.current-post-parent > a,
+nav ul li.current_page_ancestor > a,
+nav ul li.current-menu-ancestor > a {
+  color: #dd3333;
 }
 
 /* -------------------------------------------------------------------------------- */
@@ -530,6 +540,22 @@ footer .theme-copyright a {
 
 footer .theme-copyright a:hover {
   text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-left: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
+}
+
+table tr td {
+  border-right: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 1rem;
+  line-height: 1.628rem;
+  padding: 10px;
+  text-align: left;
+  word-break: break-all;
 }
 
 /* -------------------------------------------------------------------------------- */
@@ -1172,6 +1198,12 @@ footer .theme-copyright a:hover {
   font-family: 'Noto Serif', serif;
 }
 
+@media only screen and (max-width: 820px) {
+  .entry {
+    padding: 0 20px;
+  }
+}
+
 .entry p,
 .entry ul {
   font-size: 1rem;
@@ -1679,10 +1711,6 @@ footer .theme-copyright a:hover {
   padding-top: 20px;
 }
 
-.commentlist li .children li {
-  padding-left: 80px;
-}
-
 .commentlist li .children li img.avatar {
   width: 30px !important;
   height: 30px !important;
@@ -1692,7 +1720,11 @@ footer .theme-copyright a:hover {
   width: calc(100% - 30px);
 }
 
-.commentlist li .children li .children li {
+.commentlist li .children li.depth-2 {
+  padding-left: 80px;
+}
+
+.commentlist li .children li.depth-3 {
   padding-left: 50px;
 }
 
@@ -1747,4 +1779,16 @@ footer .theme-copyright a:hover {
   display: block;
   font-size: 0;
   line-height: 0;
+}
+
+.comments-nav {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 20px;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+.comments-nav a {
+  color: inherit;
+  color: #aaaaaa;
 }

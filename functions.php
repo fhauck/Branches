@@ -128,7 +128,7 @@ class branches_Customize {
 		// Add Setting for Accent Color
 		$wp_customize->add_setting( 'accent_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
 		 array(
-		    'default' => '#000000', //Default setting/value to save
+		    'default' => '#dd3333', //Default setting/value to save
 		    'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
 		    'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
 		    'sanitize_callback' => 'sanitize_hex_color'            
@@ -160,7 +160,7 @@ class branches_Customize {
 		$wp_customize->add_setting(
 		    'branches_sidebar_frontpage',
 		    array(
-		        'default' => true,
+		        'default' => false,
 		        'sanitize_callback' => 'branches_sanitize_int'
 		    )
 		);
@@ -168,7 +168,7 @@ class branches_Customize {
 		$wp_customize->add_setting(
 		    'branches_sidebar_singlepage',
 		    array(
-		        'default' => true,
+		        'default' => false,
 		        'sanitize_callback' => 'branches_sanitize_int'
 		    )
 		);
@@ -226,10 +226,8 @@ class branches_Customize {
 	      
 	      <style type="text/css">
 	           
-	           <?php self::branches_generate_css('nav ul li a:hover', 'color', 'accent_color'); ?>
-	           <?php self::branches_generate_css('.read-more', 'color', 'accent_color'); ?>
 	           
-	           <?php self::branches_generate_css('nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color'); ?>
+	           <?php self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color'); ?>
 
 	      </style> 
 	      

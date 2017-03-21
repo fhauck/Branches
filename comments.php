@@ -23,25 +23,6 @@
 				<ol class="commentlist">
 				    <?php wp_list_comments( array( 'type' => 'comment', 'callback' => 'branches_comment' ) ); ?>
 				</ol>
-				
-				<?php if (!empty($comments_by_type['pings'])) : ?>
-				
-					<div class="pingbacks">
-										
-						<h3 class="pingbacks-title">
-						
-							<?php echo count($wp_query->comments_by_type[pings]) . ' ';
-							echo _n( 'Pingback', 'Pingbacks', count($wp_query->comments_by_type[pings]), 'branches' ); ?>
-						
-						</h3>
-					
-						<ol class="pingbacklist">
-						    <?php wp_list_comments( array( 'type' => 'pings', 'callback' => 'branches_comment' ) ); ?>
-						</ol>
-							
-					</div> <!-- /pingbacks -->
-				
-				<?php endif; ?>
 						
 				<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 					
