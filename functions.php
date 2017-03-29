@@ -37,6 +37,9 @@ function branches_setup() {
 	add_image_size( 'branches_post-thumbnail-medium', 720, 460, true );
 	add_image_size( 'branches_post-thumbnail-small', 360, 230, true );	
 	
+	
+	add_editor_style( array( 'branches-editor-styles.css', branches_fonts_url() ) );
+	
 
 	// Make the theme translation ready
 	load_theme_textdomain('branches', get_template_directory() . '/languages');
@@ -64,22 +67,49 @@ function branches_custom_logo_setup() {
 }
 add_action( 'after_setup_theme', 'branches_custom_logo_setup' );
 
+
+
+
+if ( ! function_exists( 'branches_fonts_url' ) ) :
+function branches_fonts_url() {
+	$fonts_url = '';
+	$fonts     = array();
+	$subsets   = 'latin,latin-ext';
+
+	/* translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'branches' ) ) {
+		$fonts[] = 'Open Sans:400,600,700,800,800i';
+	}
+
+	/* translators: If there are characters in your language that are not supported by Noto Serif, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'branches' ) ) {
+		$fonts[] = 'Noto Serif:400,700';
+	}
+
+
+	if ( $fonts ) {
+		$fonts_url = add_query_arg( array(
+			'family' => urlencode( implode( '|', $fonts ) ),
+			'subset' => urlencode( $subsets ),
+		), 'https://fonts.googleapis.com/css' );
+	}
+
+	return $fonts_url;
+}
+endif;
+
+
+
 // Register and enqueue styles
 function branches_load_style() {
 	if ( !is_admin() ) {
-	    wp_enqueue_style( 'branches_googleFonts', '//fonts.googleapis.com/css?family=Noto+Serif:400,700|Open+Sans:400,600,700,800,800i' );
+		// Add custom fonts, used in the main stylesheet.
+		wp_enqueue_style( 'branches-fonts', branches_fonts_url(), array(), null );
 	    wp_enqueue_style( 'branches_style', get_stylesheet_uri() );
 	}
 }
 add_action('wp_print_styles', 'branches_load_style');
 
-// Add editor styles
-function branches_add_editor_styles() {
-    add_editor_style( 'branches-editor-styles.css' );
-    $font_url = '//fonts.googleapis.com/css?family=Noto+Serif:400,700|Open+Sans:400,600,700,800,800i';
-    add_editor_style( str_replace( ',', '%2C', $font_url ) );
-}
-add_action( 'init', 'branches_add_editor_styles' );
 
 // Add sidebar widget area
 function branches_sidebar_reg() {
