@@ -406,5 +406,3 @@ function branches_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif;
-
-?>
