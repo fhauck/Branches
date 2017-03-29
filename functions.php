@@ -26,7 +26,6 @@ function branches_setup() {
 	) );
 	
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size ( 360, 230, true );
 	
 	add_image_size( 'branches_big-header-xxlarge', 2320, 980, true );
 	add_image_size( 'branches_big-header-xlarge', 1740, 735, true );
