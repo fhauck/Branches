@@ -139,12 +139,11 @@ function branches_scripts() {
 add_action( 'wp_enqueue_scripts', 'branches_scripts' );
 
 
-
-
-function branches_sanitize_int($yourVar){
-	//return true;
-	$sanitizedNum = filter_var($yourVar, FILTER_SANITIZE_NUMBER_INT);
-	return $sanitizedNum;
+function branches_sanitize_int( $input, $setting ) {
+$input = absint( $input );
+// If the input is an absolute integer, return it.
+// otherwise, return the default.
+return ( $input ? $input : $setting->default );
 }
 
 // Branches theme options
