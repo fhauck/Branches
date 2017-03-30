@@ -21,7 +21,7 @@
 			<div class="comments">
 		
 				<ol class="commentlist">
-				    <?php wp_list_comments( array( 'type' => 'comment', 'callback' => 'branches_comment' ) ); ?>
+				    <?php wp_list_comments( array( 'type' => 'comment') ); ?>
 				</ol>
 						
 				<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>

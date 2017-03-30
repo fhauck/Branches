@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*---------------------------------------------------------------------------------
 
 	Theme Name: Branches
@@ -1549,11 +1550,57 @@ table tr td {
 .commentlist li .children li.depth-2 {
   padding-left: 80px;
 }
+.commentlist li .children li.depth-2 .comment-body {
+  padding-left: 50px;
+}
 .commentlist li .children li.depth-3 {
   padding-left: 50px;
 }
+.commentlist .comment-body {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding-left: 80px;
+  font-size: 1rem;
+  line-height: 1.728rem;
+  font-family: 'Noto Serif', serif;
+}
+.commentlist .comment-body p,
+.commentlist .comment-body ul {
+  font-size: 1rem;
+  line-height: 1.728rem;
+  margin: 1rem 0;
+}
+.commentlist .reply {
+  color: #aaaaaa;
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+}
+.commentlist .reply a {
+  color: inherit;
+}
+.commentlist cite {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  margin: 0;
+  text-align: left;
+  max-width: none;
+  font-weight: 600;
+  color: #1f1f1f;
+  font-family: 'Open Sans', sans-serif;
+}
+.commentlist cite a {
+  color: inherit;
+}
+.commentlist span.says {
+  color: #aaaaaa;
+}
 .commentlist img.avatar {
-  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 60px !important;
   height: 60px !important;
   margin-top: 6px;
@@ -1575,17 +1622,6 @@ table tr td {
 }
 .commentlist .comment-inner h4 a {
   color: inherit;
-}
-.commentlist .comment-content {
-  font-size: 1rem;
-  line-height: 1.728rem;
-  font-family: 'Noto Serif', serif;
-}
-.commentlist .comment-content p,
-.commentlist .comment-content ul {
-  font-size: 1rem;
-  line-height: 1.728rem;
-  margin: 1.5rem 0;
 }
 .commentlist .comment-header {
   margin-bottom: -1rem;

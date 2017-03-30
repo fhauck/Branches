@@ -57,7 +57,7 @@ if ( isset($sticky[0]) ) {
 			) );
 		?>
 			
-	<?php wp_reset_query(); ?>
+	<?php wp_reset_postdata(); ?>
 
 	<div class="clear"></div>
 </div>

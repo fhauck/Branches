@@ -1693,6 +1693,10 @@ table {
 			
 			li.depth-2 {
 				padding-left: 80px;
+				
+				.comment-body {
+					padding-left: 50px;
+				}
 			}
 			
 			li.depth-3 {
@@ -1701,8 +1705,59 @@ table {
 		}
 	}
 	
+	.comment-body {
+		width: 100%;
+		display: block;
+		position: relative;
+		padding-left: 80px;
+		
+		font-size: 1rem;
+		line-height: 1.728rem;
+		font-family: 'Noto Serif', serif;
+		
+		p,
+		ul {
+			font-size: 1rem;
+			line-height: 1.728rem;
+			margin: 1rem 0;		
+		}
+	}
+	
+	.reply {
+		color: $colorMiddleGrey;
+		text-align: left;
+	    font-size: 0.9rem;
+	    line-height: 1.2rem;
+	    font-family: 'Open Sans', sans-serif;
+		
+		a {
+			color: inherit;
+		}
+	}
+	
+	cite {
+	    font-size: 1.1rem;
+	    line-height: 1.4rem;
+	    margin: 0;
+	    text-align: left;
+	    max-width: none;
+	    font-weight: 600;
+	    color: $colorBlack;
+	    font-family: 'Open Sans', sans-serif;
+	    
+	    a {
+		    color: inherit;
+	    }
+	}
+	
+	span.says {
+		color: $colorMiddleGrey;
+	}
+	
 	img.avatar {
-		float: left;
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 60px !important;
 		height: 60px !important;
 		margin-top: 6px;
@@ -1728,20 +1783,7 @@ table {
 		}
 	
 	}
-	
-	.comment-content {
-		
-		font-size: 1rem;
-		line-height: 1.728rem;
-		font-family: 'Noto Serif', serif;
-		
-		p,
-		ul {
-			font-size: 1rem;
-			line-height: 1.728rem;
-			margin: 1.5rem 0;		
-		}
-	}
+
 	
 	.comment-header {
 		margin-bottom: -1rem;
