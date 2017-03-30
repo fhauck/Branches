@@ -49,6 +49,12 @@ Carlos Cipa & Occupanther for the great Song "Branches" on the "Trow" EP
 
 == Changelog ==
 
+= 1.03 =
+
+- minified a some functions
+- escaped everything right
+- some technical changes
+
 = 1.02 =
 
 - fixed some optical and technical issues
