@@ -3,7 +3,7 @@
 	<div class="teaser-image">
 		<a href="<?php esc_url( the_permalink() ); ?>" class="post-info-left-top"><?php echo esc_attr( get_the_date() ); ?></a>
 		<a href="<?php esc_url( the_permalink() ); ?>#comments" class="post-info-right-top"><?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?></a>
-		<span class="post-info-left-bottom"><?php echo get_the_category_list(', '); ?></span>
+		<span class="post-info-left-bottom"><?php the_category( ', ' ); ?></span>
 		<?php edit_post_link(__( 'Edit Post', 'branches' ), '<span class="post-info-right-bottom">', '</span>'); ?>
 		<a class="teaser-image-link" href="<?php esc_url( the_permalink() ); ?>"><?php the_post_thumbnail('branches_post-thumbnail-medium'); ?></a>
 	</div>
