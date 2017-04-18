@@ -13,10 +13,10 @@ if ( isset($sticky[0]) ) {
 ?>
 	<div class="sticky-post-top">
 	<article class="sticky">
-		<h2><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?></a></h2>
+		<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 		<?php the_post_thumbnail('branches_big-header-xxlarge'); ?>
-		<a href="<?php esc_url( the_permalink() ); ?>" class="post-info-left-top"><?php echo esc_attr( get_the_date() ); ?></a>
-		<a href="<?php esc_url( the_permalink() ); ?>" class="post-info-right-top"><?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?></a>
+		<a href="<?php the_permalink(); ?>" class="post-info-left-top"><?php echo esc_attr( get_the_date() ); ?></a>
+		<a href="<?php the_permalink(); ?>" class="post-info-right-top"><?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?></a>
 		<span class="post-info-left-bottom"><?php the_category( ', ' ); ?></span>
 		<?php edit_post_link(__( 'Edit Post', 'branches' ), '<span class="post-info-right-bottom">', '</span>'); ?>
 	</article>
@@ -26,7 +26,7 @@ if ( isset($sticky[0]) ) {
 }
 } ?>
 
-<div id="post-area" <?php if( get_theme_mod( 'branches_sidebar_frontpage' ) == '') { ?>class="fullwidth"<?php } ?>>
+<div id="post-area" <?php if( esc_attr( get_theme_mod( 'branches_sidebar_frontpage' ) ) == '') { ?>class="fullwidth"<?php } ?>>
 
 	<?php 
 	if(!empty($paged)) {
@@ -62,7 +62,7 @@ if ( isset($sticky[0]) ) {
 	<div class="clear"></div>
 </div>
 
-<?php if( get_theme_mod( 'branches_sidebar_frontpage' ) == '') { ?>
+<?php if( esc_attr( get_theme_mod( 'branches_sidebar_frontpage' ) ) == '') { ?>
 
 <?php } else { ?>
 <div id="sidebar">

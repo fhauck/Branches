@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div id="post-area" <?php if( get_theme_mod( 'branches_sidebar_frontpage' ) == '') { ?>class="fullwidth"<?php } ?>>
+<div id="post-area" <?php if( esc_attr( get_theme_mod( 'branches_sidebar_frontpage' ) ) == '') { ?>class="fullwidth"<?php } ?>>
 	
 	<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 
@@ -23,7 +23,7 @@
 	<div class="clear"></div>
 </div>
 
-<?php if( get_theme_mod( 'branches_sidebar_frontpage' ) == '') { ?>
+<?php if( esc_attr( get_theme_mod( 'branches_sidebar_frontpage' ) ) == '') { ?>
 
 <?php } else { ?>
 <div id="sidebar">

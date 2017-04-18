@@ -5,11 +5,11 @@ Tested up to: WordPress 4.7
 Version: 1.04
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, one-column, two-columns
+Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 
 == Description ==
 
-Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or much additional javascript stuff for the layout itself, so its very lightweight.
+Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and don't need a single image or much additional javascript stuff for the layout itself, so its very lightweight.
 
 == Installation ==
 
@@ -48,6 +48,11 @@ www.andersnoren.se - for developing great themes, learned a lot while studying h
 Carlos Cipa & Occupanther for the great Song "Branches" on the "Trow" EP
 
 == Changelog ==
+
+= 1.04 =
+
+- fixed some escaping issues
+- removed some unnecessary code
 
 = 1.03 =
 

@@ -43,10 +43,6 @@ function branches_setup() {
 	// Make the theme translation ready
 	load_theme_textdomain('branches', get_template_directory() . '/languages');
 	
-	$locale = get_locale();
-	$locale_file = get_template_directory() . "/languages/$locale.php";
-	if ( is_readable($locale_file) )
-	  require_once($locale_file);
 	  
 	// Set content-width
 	global $content_width;
@@ -107,7 +103,7 @@ function branches_load_style() {
 	    wp_enqueue_style( 'branches_style', get_stylesheet_uri() );
 	}
 }
-add_action('wp_print_styles', 'branches_load_style');
+add_action('wp_enqueue_scripts', 'branches_load_style');
 
 
 // Add sidebar widget area
@@ -255,7 +251,7 @@ class branches_Customize {
 	      <style type="text/css">
 	           
 	           
-	           <?php self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color'); ?>
+	           <?php esc_html( self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color') ); ?>
 
 	      </style> 
 	      
@@ -291,13 +287,19 @@ add_action( 'wp_head' , array( 'branches_Customize' , 'branches_header_output' )
 
 // Change the length of excerpts
 function branches_custom_excerpt_length( $length ) {
+	if ( is_admin() ) {
+		return $length;
+	}
 	return 42;
 }
 add_filter( 'excerpt_length', 'branches_custom_excerpt_length', 999 );
 
 
 // Change the excerpt ellipsis
-function branches_new_excerpt_more( $more ) {
+function branches_new_excerpt_more( $link ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 	return ' ...';
 }
 add_filter( 'excerpt_more', 'branches_new_excerpt_more' );
@@ -310,4 +312,3 @@ function branches_move_comment_field_to_bottom( $fields ) {
 }
 add_filter( 'comment_form_fields', 'branches_move_comment_field_to_bottom' );
 
-if ( is_singular() ) wp_enqueue_script( "comment-reply" );
