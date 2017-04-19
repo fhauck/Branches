@@ -2,7 +2,7 @@
 Contributors: Flo Hauck
 Requires at least: WordPress 4.7
 Tested up to: WordPress 4.7
-Version: 1.04
+Version: 1.05
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
@@ -48,6 +48,9 @@ www.andersnoren.se - for developing great themes, learned a lot while studying h
 Carlos Cipa & Occupanther for the great Song "Branches" on the "Trow" EP
 
 == Changelog ==
+
+= 1.05 =
+- removed Charset from style.css
 
 = 1.04 =
 
