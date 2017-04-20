@@ -260,10 +260,10 @@ class branches_Customize {
       <?php
    }
    
-
+   
    public static function branches_generate_css( $selector, $style, $mod_name, $prefix='', $postfix='', $echo=true ) {
       $return = '';
-      $mod = get_theme_mod($mod_name);
+      $mod = esc_attr( get_theme_mod($mod_name) );
       if ( ! empty( $mod ) ) {
          $return = sprintf('%s { %s:%s; }',
             $selector,
