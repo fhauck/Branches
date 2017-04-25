@@ -9,7 +9,7 @@ Tags: blog, featured-images, sticky-post, theme-options, translation-ready, cust
 
 == Description ==
 
-Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and don't need a single image or much additional javascript stuff for the layout itself, so its very lightweight.
+Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or much additional javascript stuff for the layout itself, so its very lightweight. You can choose between 5 different Fonts and set an individual accent color.
 
 == Installation ==
 
@@ -36,6 +36,10 @@ GNU General Public License for more details.
 Fonts:
 Open Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 Noto Serif Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Source Sans Pro Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Cabin Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Vollkorn license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+
 
 Images used on Theme-Screenshot: 
 Stacy Wyss (https://unsplash.com/@stacywyss?photo=-aDl1z8_nGY) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/

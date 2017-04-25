@@ -19,11 +19,8 @@ function branches_setup() {
 	
 	// Add nav menu
 	register_nav_menu( 'primary', __('Primary Menu','branches') );
+	register_nav_menu( 'footer', __('Footer Menu','branches') );
 	
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'branches' ),
-	) );
 	
 	add_theme_support( 'post-thumbnails' );
 	
@@ -73,20 +70,29 @@ function branches_fonts_url() {
 
 	/* translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language. */
 	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'branches' ) ) {
-		$fonts[] = 'Open Sans:400,600,700,800,800i';
+		$fonts[] = 'Open Sans:400,600,800';
 	}
 
 	/* translators: If there are characters in your language that are not supported by Noto Serif, translate this to 'off'. Do not translate into your own language. */
 	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'branches' ) ) {
-		$fonts[] = 'Noto Serif:400,700,400i,700i';
+		$fonts[] = 'Noto Serif:400,700';
 	}
 	
-	/* translators: If there are characters in your language that are not supported by Roboto, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Roboto font: on or off', 'mota' ) ) {
-		$fonts[] = 'Roboto:400,700,800,800i';
+	/* translators: If there are characters in your language that are not supported by Source Sans Pro, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'mota' ) ) {
+		$fonts[] = 'Source Sans Pro:400,600,800';
 	}
 
-
+	/* translators: If there are characters in your language that are not supported by Cabin, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Cabin font: on or off', 'mota' ) ) {
+		$fonts[] = 'Cabin:400,600,800';
+	}
+	
+	/* translators: If there are characters in your language that are not supported by Vollkorn, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Vollkorn font: on or off', 'mota' ) ) {
+		$fonts[] = 'Vollkorn:400,700';
+	}
+	
 	if ( $fonts ) {
 		$fonts_url = add_query_arg( array(
 			'family' => urlencode( implode( '|', $fonts ) ),
@@ -180,7 +186,7 @@ class branches_Customize {
 		    array(
 		        'title' => 'Fonts',
 		        'description' => __( 'Choose between different Fonts.', 'branches' ),
-		        'priority' => 70
+		        'priority' => 60
 		    )
 		);
 	      
@@ -272,7 +278,9 @@ class branches_Customize {
 				'choices'  => array(
 					'Open Sans, sans-serif'  => 'Open Sans',
 					'Noto Serif, serif'  => 'Noto Serif',
-					'Roboto, sans-serif'  => 'Roboto'
+					'Source Sans Pro, sans-serif'  => 'Source Sans Pro',
+					'Cabin, sans-serif'  => 'Cabin',
+					'Vollkorn, serif'  => 'Vollkorn'
 				)
 		    )
 		);  
@@ -294,7 +302,9 @@ class branches_Customize {
 				'choices'  => array(
 					'Open Sans, sans-serif'  => 'Open Sans',
 					'Noto Serif, serif'  => 'Noto Serif',
-					'Roboto, sans-serif'  => 'Roboto'
+					'Source Sans Pro, sans-serif'  => 'Source Sans Pro',
+					'Cabin, sans-serif'  => 'Cabin',
+					'Vollkorn, serif'  => 'Vollkorn'
 				)
 		    )
 		); 
@@ -313,7 +323,7 @@ class branches_Customize {
 			       
 			       esc_html( self::branches_generate_css('#post-area article .teaser-content, .entry, .widget-content, .commentlist .comment-body', 'font-family', 'branches_second_font') ); 
 		           
-		           esc_html( self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color') ); 
+		           esc_html( self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a, footer a:hover, #sidebar a:hover, .pagination .page-numbers:hover', 'color', 'accent_color') ); 
 		           
 		           
 		        ?>

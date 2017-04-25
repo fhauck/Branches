@@ -5,7 +5,7 @@
     Text Domain: branches
 	Theme URI: http://www.flohauck.de/wordpress-themes/branches/
 	Version: 1.07
-	Description: Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or much additional javascript stuff for the layout itself, so its very lightweight.
+	Description: Branches is a simple, minimalistic magazine/blog theme. It has only a few options but that should be enough. Its fully retina ready and dont need a single image or much additional javascript stuff for the layout itself, so its very lightweight. You can choose between 5 different Fonts and set an individual accent color.
 	Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 	Author: Flo Hauck
 	Author URI: http://www.flohauck.de
@@ -442,6 +442,9 @@ footer {
   background-color: #f0f0f0;
   padding: 60px 0;
 }
+footer a:hover {
+  color: #1f1f1f;
+}
 footer .footer-inner {
   width: 94%;
   max-width: 1160px;
@@ -451,7 +454,7 @@ footer .footer-inner {
 footer .theme-linklove {
   float: right;
   font-size: 0.9rem;
-  line-height: 0.9rem;
+  line-height: 1.3rem;
   font-family: 'Open Sans', sans-serif;
   color: #aaaaaa;
   text-align: right;
@@ -459,8 +462,30 @@ footer .theme-linklove {
 footer .theme-linklove a {
   color: #aaaaaa;
 }
-footer .theme-linklove a:hover {
-  text-decoration: underline;
+footer .footer-navi {
+  float: left;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  color: #aaaaaa;
+  text-align: left;
+}
+footer .footer-navi ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+}
+footer .footer-navi ul li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 15px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+  display: inline-block;
+}
+footer .footer-navi a {
+  color: #aaaaaa;
 }
 footer .social {
   position: absolute;
@@ -488,7 +513,7 @@ footer .social a:hover {
 footer .theme-copyright {
   float: left;
   font-size: 0.9rem;
-  line-height: 0.9rem;
+  line-height: 1.3rem;
   font-family: 'Open Sans', sans-serif;
   color: #aaaaaa;
   text-align: left;
