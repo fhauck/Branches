@@ -2,7 +2,7 @@
 Contributors: Flo Hauck
 Requires at least: WordPress 4.7
 Tested up to: WordPress 4.7
-Version: 1.06
+Version: 1.07
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, featured-images, sticky-post, theme-options, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
@@ -49,10 +49,16 @@ Carlos Cipa & Occupanther for the great Song "Branches" on the "Trow" EP
 
 == Changelog ==
 
+= 1.07 =
+
+- added font-switcher
+
 = 1.06 =
+
 - escaped get_theme_mod
 
 = 1.05 =
+
 - removed Charset from style.css
 
 = 1.04 =
