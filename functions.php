@@ -78,7 +78,12 @@ function branches_fonts_url() {
 
 	/* translators: If there are characters in your language that are not supported by Noto Serif, translate this to 'off'. Do not translate into your own language. */
 	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'branches' ) ) {
-		$fonts[] = 'Noto Serif:400,700';
+		$fonts[] = 'Noto Serif:400,700,400i,700i';
+	}
+	
+	/* translators: If there are characters in your language that are not supported by Roboto, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Roboto font: on or off', 'mota' ) ) {
+		$fonts[] = 'Roboto:400,700,800,800i';
 	}
 
 
@@ -154,7 +159,7 @@ class branches_Customize {
 		 array(
 		    'default' => '#dd3333', //Default setting/value to save
 		    'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-		    'transport' => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+		    'transport' => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
 		    'sanitize_callback' => 'sanitize_hex_color'            
 		 ) 
 		);
@@ -170,6 +175,14 @@ class branches_Customize {
 		    'priority' => 10, //Determines the order this control appears in for the specified section
 		 ) 
 		) );
+		
+		$wp_customize->add_section('branches_fonts',
+		    array(
+		        'title' => 'Fonts',
+		        'description' => __( 'Choose between different Fonts.', 'branches' ),
+		        'priority' => 70
+		    )
+		);
 	      
 	      
 	
@@ -240,6 +253,51 @@ class branches_Customize {
 		        'type' => 'checkbox',
 		    )
 		);  
+		
+		// Add Font Switcher
+		
+		$wp_customize->add_setting(
+		    'branches_main_font',
+		    array(
+		        'default' => 'Open Sans, sans-serif'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'branches_main_font',
+		    array(
+		        'label' => __( 'Main Font (Headlines)', 'branches' ),
+		        'section' => 'branches_fonts',
+		        'type' => 'select',
+				'choices'  => array(
+					'Open Sans, sans-serif'  => 'Open Sans',
+					'Noto Serif, serif'  => 'Noto Serif',
+					'Roboto, sans-serif'  => 'Roboto'
+				)
+		    )
+		);  
+		
+		
+		$wp_customize->add_setting(
+		    'branches_second_font',
+		    array(
+		        'default' => 'Noto Serif, serif'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'branches_second_font',
+		    array(
+		        'label' => __( 'Second Font (Text, Teasertext)', 'branches' ),
+		        'section' => 'branches_fonts',
+		        'type' => 'select',
+				'choices'  => array(
+					'Open Sans, sans-serif'  => 'Open Sans',
+					'Noto Serif, serif'  => 'Noto Serif',
+					'Roboto, sans-serif'  => 'Roboto'
+				)
+		    )
+		); 
 	
 	}
 
@@ -249,10 +307,16 @@ class branches_Customize {
 	      <!-- Customizer CSS --> 
 	      
 	      <style type="text/css">
-	           
-	           
-	           <?php esc_html( self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color') ); ?>
-
+	           <?php 
+		           
+			       esc_html( self::branches_generate_css('body, footer .theme-linklove, footer .theme-copyright, #post-area article .teaser-content h2, .read-more, .tag-list, .widget-title, .widget_search #searchform input[type=text], .widget_search #searchform input#searchsubmit, .comment-meta, #commentform label, #commentform input, #commentform textarea, .commentlist .reply, .commentlist cite', 'font-family', 'branches_main_font') ); 
+			       
+			       esc_html( self::branches_generate_css('#post-area article .teaser-content, .entry, .widget-content, .commentlist .comment-body', 'font-family', 'branches_second_font') ); 
+		           
+		           esc_html( self::branches_generate_css('.read-more, nav ul li a:hover, nav ul li.current-menu-item > a, nav ul li.current-post-ancestor > a, nav ul li.current-menu-parent > a, nav ul li.current-post-parent > a, nav ul li.current_page_ancestor > a, nav ul li.current-menu-ancestor > a', 'color', 'accent_color') ); 
+		           
+		           
+		        ?>
 	      </style> 
 	      
 	      <!--/Customizer CSS-->
