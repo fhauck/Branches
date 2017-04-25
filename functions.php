@@ -79,17 +79,17 @@ function branches_fonts_url() {
 	}
 	
 	/* translators: If there are characters in your language that are not supported by Source Sans Pro, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'mota' ) ) {
+	if ( 'off' !== _x( 'on', 'Source Sans Pro font: on or off', 'branches' ) ) {
 		$fonts[] = 'Source Sans Pro:400,600,800';
 	}
 
 	/* translators: If there are characters in your language that are not supported by Cabin, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Cabin font: on or off', 'mota' ) ) {
+	if ( 'off' !== _x( 'on', 'Cabin font: on or off', 'branches' ) ) {
 		$fonts[] = 'Cabin:400,600,800';
 	}
 	
 	/* translators: If there are characters in your language that are not supported by Vollkorn, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Vollkorn font: on or off', 'mota' ) ) {
+	if ( 'off' !== _x( 'on', 'Vollkorn font: on or off', 'branches' ) ) {
 		$fonts[] = 'Vollkorn:400,700';
 	}
 	
@@ -150,6 +150,10 @@ $input = absint( $input );
 // If the input is an absolute integer, return it.
 // otherwise, return the default.
 return ( $input ? $input : $setting->default );
+}
+
+function branches_sanitize_string( $input ) {
+return $input;
 }
 
 // Branches theme options
@@ -265,7 +269,8 @@ class branches_Customize {
 		$wp_customize->add_setting(
 		    'branches_main_font',
 		    array(
-		        'default' => 'Open Sans, sans-serif'
+		        'default' => 'Open Sans, sans-serif',
+		        'sanitize_callback' => 'branches_sanitize_string'
 		    )
 		);
 		
@@ -289,7 +294,8 @@ class branches_Customize {
 		$wp_customize->add_setting(
 		    'branches_second_font',
 		    array(
-		        'default' => 'Noto Serif, serif'
+		        'default' => 'Noto Serif, serif',
+		        'sanitize_callback' => 'branches_sanitize_string'
 		    )
 		);
 		
