@@ -55,7 +55,8 @@ Carlos Cipa & Occupanther for the great Song "Branches" on the "Trow" EP
 
 = 1.07 =
 
-- added font-switcher
+- choose between 5 different fonts
+- a menu can be set as footer menu
 
 = 1.06 =
 
