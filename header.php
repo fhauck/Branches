@@ -17,6 +17,13 @@
 	
 	<header>
 		
+		<?php if ( is_active_sidebar( 'header' ) ) : ?>
+		<div class="header-widget">
+			<?php dynamic_sidebar('header'); ?>
+		</div>
+		<?php endif; ?>
+
+		
 		<div id="logo">
 			<?php 
 			if ( function_exists( 'the_custom_logo' ) ) {

@@ -118,7 +118,8 @@ add_action('wp_enqueue_scripts', 'branches_load_style');
 
 
 // Add sidebar widget area
-function branches_sidebar_reg() {
+function branches_widgets_init() {
+	
 	register_sidebar(array(
 	  'name' => __( 'Sidebar', 'branches' ),
 	  'id' => 'sidebar',
@@ -128,8 +129,20 @@ function branches_sidebar_reg() {
 	  'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
 	  'after_widget' => '</div><div class="clear"></div></div>'
 	));
+
+	register_sidebar(array(
+	  'name' => __( 'Header', 'branches' ),
+	  'id' => 'header',
+	  'description' => __( 'Widgets in this area will be shown on the right Side of the Header.', 'branches' ),
+	  'before_title' => '<h3 class="widget-title">',
+	  'after_title' => '</h3>',
+	  'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
+	  'after_widget' => '</div><div class="clear"></div></div>'
+	));
+		
 }
-add_action( 'widgets_init', 'branches_sidebar_reg' ); 
+add_action( 'widgets_init', 'branches_widgets_init' ); 
+
 
 
 // Enqueue scripts and styles.
