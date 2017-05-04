@@ -1295,6 +1295,8 @@ table tr td {
   line-height: 1.2rem;
   font-family: 'Open Sans', sans-serif;
   color: #aaaaaa;
+  max-width: 960px;
+  margin: 2rem auto;
 }
 .tag-list a {
   color: inherit;
